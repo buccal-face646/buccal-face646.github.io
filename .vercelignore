@@ -1,0 +1,7 @@
+# Never upload secrets or local tooling to Vercel.
+.env*
+.vercel
+.git
+# Dev-only files: the site does not need them.
+serve.py
+README.md

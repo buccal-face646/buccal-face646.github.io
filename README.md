@@ -120,6 +120,14 @@ git add -A && git commit -m "Describe the change" && git push
 
 It's live again about a minute after the push.
 
+### Link preview
+
+Sharing the URL on LinkedIn, Slack, WhatsApp or X shows `og-image.png`, a 1200×630 card with
+the headline, Neura and the three proof numbers. Its source is `og/card.html`; the comment at
+the top has the one-line command to regenerate it after editing the numbers. LinkedIn caches
+previews for about a week, so after changing the image paste the URL into
+<https://www.linkedin.com/post-inspector/> to make it re-read it.
+
 **Once it's live**, put the URL in three places — that's what actually gets it seen:
 - your LinkedIn headline and the "Website" field
 - the top of your résumé PDF, next to your email
@@ -149,6 +157,8 @@ js/neura-skills.js      Neura's skills: job matcher, tailored pitch, guided tour
 js/chat.js              assistant, hero chat, retrieval inspector
 js/playground.js        canvas demos and their controls
 js/main.js              rendering, fibre-strand field, command palette
+og-image.png            link-preview card (1200×630) for LinkedIn, Slack, X
+og/card.html            source of og-image.png
 assets/                 (not present yet) a phone-free résumé PDF goes here
 ```
 

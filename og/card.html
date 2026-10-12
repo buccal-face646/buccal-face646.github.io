@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--
+  Source of /og-image.png, the 1200x630 card LinkedIn, Slack, WhatsApp and X
+  show when someone shares the portfolio link. If the headline numbers change,
+  edit them below and regenerate from the repo root:
+
+    chrome --headless=new --hide-scrollbars --force-device-scale-factor=1
+           --window-size=1200,630 --virtual-time-budget=8000
+           --allow-file-access-from-files --screenshot=og-image.png og/card.html
+
+  LinkedIn caches previews for about a week; paste the URL into
+  https://www.linkedin.com/post-inspector/ to make it re-read the new image.
+-->
+<title>Link preview card</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=block" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html, body { width: 1200px; height: 630px; margin: 0; overflow: hidden; }
+  body {
+    background: #eae8e3; color: #171511; font-family: var(--sans);
+    position: relative;
+  }
+  /* faint editorial grid, like the site's overlay */
+  .grid {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(23,21,17,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(23,21,17,.045) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .card {
+    position: absolute; inset: 0; padding: 52px 56px 48px 60px;
+    display: grid; grid-template-columns: 1fr 372px; gap: 48px;
+  }
+  .left { display: flex; flex-direction: column; min-width: 0; }
+  .top {
+    font-family: var(--mono); font-size: 17px; letter-spacing: .04em;
+    display: flex; gap: 18px; align-items: baseline; color: #5d5850;
+  }
+  .top b { color: #171511; font-weight: 600; }
+  .og-display {
+    font-family: var(--display); font-weight: 800; text-transform: uppercase;
+    font-size: 100px; line-height: .9; letter-spacing: -.045em; color: #171511;
+    margin: 34px 0 0;
+  }
+  .og-display span { display: block; white-space: nowrap; }
+  .og-display .ind { padding-left: 1.15em; }
+  .og-display em {
+    font-family: var(--serif); font-style: italic; font-weight: 400; text-transform: none;
+    letter-spacing: -.02em; color: #9c5b0c; font-size: 1.04em; padding-right: .04em;
+  }
+  .og-display .slash { display: inline; font-weight: 300; color: #8f897e; letter-spacing: -.08em; margin: 0 .04em; }
+
+  .sub {
+    margin-top: 26px; font-size: 22px; line-height: 1.38; color: #2a2620; max-width: 640px;
+    letter-spacing: -.005em;
+  }
+  .metrics {
+    margin-top: auto; display: grid; grid-template-columns: repeat(3, auto); justify-content: start;
+    border-top: 1px solid rgba(23,21,17,.3);
+  }
+  .m { padding: 16px 30px 0 0; margin-right: 30px; border-right: 1px solid rgba(23,21,17,.14); }
+  .m:last-child { border-right: 0; margin-right: 0; }
+  .m-v { font-family: var(--display); font-weight: 700; font-size: 40px; letter-spacing: -.035em; line-height: 1; }
+  .m-v i { font-style: normal; color: #d98a1e; }
+  .m-l { font-family: var(--mono); font-size: 13.5px; color: #5d5850; margin-top: 8px; letter-spacing: .02em; }
+
+  /* right: Neura in her fibre field */
+  .bot {
+    position: relative; border-radius: 26px; overflow: hidden; isolation: isolate;
+    border: 1px solid rgba(23,21,17,.3);
+    background: linear-gradient(170deg, #f4f2ed 0%, #e2dfd8 100%);
+    box-shadow: 0 50px 70px -40px rgba(217,138,30,.85), 0 30px 60px -30px rgba(23,21,17,.35);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .bot canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+  .bot > *:not(canvas) { position: relative; z-index: 1; }
+  .corner { position: absolute !important; top: 18px; right: 22px; font-family: var(--mono); font-size: 14px; color: #5d5850; letter-spacing: .08em; }
+  .stage { position: relative; display: grid; place-items: center; margin-top: 88px; }
+  .glow {
+    position: absolute; width: 280px; height: 280px; border-radius: 50%; top: 0;
+    background: radial-gradient(circle, rgba(242,192,99,.6), rgba(217,138,30,.2) 45%, transparent 70%);
+    filter: blur(28px);
+  }
+  .ring { position: absolute; width: 240px; height: 240px; border-radius: 50%; border: 1px solid rgba(156,91,12,.28); top: 18px; }
+  .stage .anime-avatar { width: 244px; height: 268px; }
+  .name { text-align: center; margin-top: 2px; }
+  .name b { display: block; font-family: var(--mono); font-size: 17px; font-weight: 600; letter-spacing: .22em; }
+  .name span { font-family: var(--serif); font-style: italic; font-size: 21px; color: #9c5b0c; }
+  .ask {
+    margin-top: auto; margin-bottom: 22px; width: calc(100% - 40px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 13px 14px 13px 20px; border-radius: 100px; background: #fff;
+    border: 1px solid rgba(23,21,17,.3); font-family: var(--mono); font-size: 18px; font-weight: 600; color: #171511;
+  }
+  .ask i {
+    width: 36px; height: 36px; border-radius: 50%; background: #171511; color: #f2c063;
+    display: grid; place-items: center; font-style: normal; font-size: 18px;
+  }
+  </style>
+</head>
+<body>
+<div class="grid"></div>
+<div class="card">
+  <div class="left">
+    <div class="top"><b>(RITESH_KUMAR)</b><span>[ ai/ml engineer · pune ]</span></div>
+    <div class="og-display">
+      <span>AI THAT CAN</span>
+      <span><em>prove</em> <span class="slash">//</span></span>
+      <span class="ind">IT&rsquo;S RIGHT</span>
+    </div>
+    <p class="sub">Production RAG, multi-agent LangGraph systems, LLM guardrails &mdash; and the evals that prove they work.</p>
+    <div class="metrics">
+      <div class="m"><div class="m-v">0.84</div><div class="m-l">recall@5 on RAG eval</div></div>
+      <div class="m"><div class="m-v">0<i>/</i>32</div><div class="m-l">attacks got through</div></div>
+      <div class="m"><div class="m-v">673</div><div class="m-l">pages · 4 languages</div></div>
+    </div>
+  </div>
+
+  <div class="bot">
+    <canvas id="strands"></canvas>
+        <div class="stage">
+      <div class="glow"></div>
+      <div class="ring"></div>
+      <div id="neura"></div>
+    </div>
+    <div class="name"><b>NEURA</b><span>ask Ritesh's AI assistant anything</span></div>
+    <div class="ask"><span>ritesh469.github.io</span><i>&#8599;</i></div>
+  </div>
+</div>
+
+<script src="../js/avatar.js"></script>
+<script>
+  AVATAR.mount(document.getElementById("neura"));
+
+  // The site's fibre-strand field, frozen at one frame with a fixed seed so
+  // the card renders the same every time.
+  (function () {
+    let seed = 7;
+    function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+    function rand(a, b) { return a + rnd() * (b - a); }
+
+    const canvas = document.getElementById("strands");
+    const box = canvas.parentElement;
+    const w = box.clientWidth, h = box.clientHeight, dpr = 2;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    const ctx = canvas.getContext("2d");
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const strands = [];
+    const N = 72;
+    for (let i = 0; i < N; i++) {
+      const u = i / (N - 1);
+      const baseX = -0.16 + u * 0.3 + rand(-0.03, 0.03);
+      const tipX = 0.52 + rand(0, 0.5) * (0.5 + u * 0.5);
+      const tipY = 0.03 + u * 0.13 + rand(-0.02, 0.02);
+      const depth = rnd();
+      strands.push({
+        bx: baseX, by: -0.08, tx: tipX, ty: tipY,
+        c1x: baseX + rand(0.12, 0.3), c1y: rand(0.08, 0.16),
+        c2x: tipX - rand(0.14, 0.3), c2y: tipY + rand(0.0, 0.05),
+        depth: depth, width: 0.6 + depth * 2.6, glow: rand(0.55, 1)
+      });
+    }
+    strands.sort(function (a, b) { return a.depth - b.depth; });
+
+    for (const s of strands) {
+      const tx = s.tx * w, ty = s.ty * h, bx = s.bx * w, by = s.by * h;
+      const a = 0.22 + s.depth * 0.62;
+      const g = ctx.createLinearGradient(bx, by, tx, ty);
+      g.addColorStop(0, "rgba(30,22,15,0)");
+      g.addColorStop(0.35, "rgba(38,26,16," + (a * 0.8).toFixed(3) + ")");
+      g.addColorStop(0.82, "rgba(96,58,22," + a.toFixed(3) + ")");
+      g.addColorStop(1, "rgba(226,150,44," + Math.min(1, a + 0.25).toFixed(3) + ")");
+      ctx.beginPath();
+      ctx.moveTo(bx, by);
+      ctx.bezierCurveTo(s.c1x * w, s.c1y * h, s.c2x * w, s.c2y * h, tx, ty);
+      ctx.strokeStyle = g; ctx.lineWidth = s.width; ctx.lineCap = "round"; ctx.stroke();
+      s._tx = tx; s._ty = ty;
+    }
+    for (const s of strands) {
+      const r = 4 + s.depth * 7;
+      const halo = ctx.createRadialGradient(s._tx, s._ty, 0, s._tx, s._ty, r * 2.1);
+      halo.addColorStop(0, "rgba(255,214,120," + (0.72 * s.glow).toFixed(3) + ")");
+      halo.addColorStop(0.35, "rgba(242,170,60," + (0.36 * s.glow).toFixed(3) + ")");
+      halo.addColorStop(1, "rgba(217,138,30,0)");
+      ctx.fillStyle = halo;
+      ctx.beginPath(); ctx.arc(s._tx, s._ty, r * 2.1, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "rgba(255,247,220," + (0.9 * s.glow).toFixed(3) + ")";
+      ctx.beginPath(); ctx.arc(s._tx, s._ty, 1 + s.depth * 1.8, 0, Math.PI * 2); ctx.fill();
+    }
+    for (let i = 0; i < 22; i++) {
+      ctx.fillStyle = "rgba(242,178,72," + rand(0.25, 0.7).toFixed(3) + ")";
+      ctx.beginPath(); ctx.arc(rand(0.04, 0.96) * w, rand(0, 0.3) * h, rand(0.6, 1.8), 0, Math.PI * 2); ctx.fill();
+    }
+    // fade the field out below Neura so her name and the pill sit on clean ground
+    ctx.globalCompositeOperation = "destination-out";
+    const fade = ctx.createLinearGradient(0, h * 0.5, 0, h * 0.72);
+    fade.addColorStop(0, "rgba(0,0,0,0)");
+    fade.addColorStop(1, "rgba(0,0,0,1)");
+    ctx.fillStyle = fade;
+    ctx.fillRect(0, h * 0.5, w, h * 0.5);
+    ctx.globalCompositeOperation = "source-over";
+  })();
+</script>
+</body>
+</html>
