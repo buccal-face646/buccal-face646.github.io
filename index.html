@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ritesh Kumar — AI/ML Engineer</title>
+<meta name="description" content="Ritesh Kumar — AI/ML Engineer in Pune, India. Production RAG, multi-agent LangGraph systems, LLM guardrails and evaluation. Every demo on this page runs live in your browser.">
+<meta name="theme-color" content="#eae8e3">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ritesh Kumar — AI/ML Engineer">
+<meta property="og:description" content="AI/ML Engineer · Pune, India. Hallucination-aware RAG, governed multi-agent systems, and the evaluations that prove they work. Interactive demos, not screenshots.">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%23e8a33d'/><stop offset='100%25' stop-color='%23b4701a'/></linearGradient></defs><rect width='100' height='100' rx='24' fill='%23171511'/><text y='.72em' x='50%25' text-anchor='middle' font-size='44' font-weight='700' font-family='system-ui,sans-serif' fill='%23e8a33d'>RK</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#assistant">Skip to content</a>
+
+<div class="bg-layer"></div>
+<div class="grid-overlay"></div>
+
+<!-- ======================= NAV ======================= -->
+<div class="scroll-progress" id="scroll-progress"></div>
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo">
+      <span class="logo-brand">(<span id="logo-name">RITESH_KUMAR</span>)</span>
+      <span class="logo-sub" id="logo-role">[ ai/ml engineer ]</span>
+    </a>
+
+    <div class="nav-links" id="nav-links">
+      <a href="#assistant">assistant <i>&#8599;</i></a>
+      <a href="#projects">work <i>&#8599;</i></a>
+      <a href="#playground">playground <i>&#8599;</i></a>
+      <a href="#skills">skills <i>&#8599;</i></a>
+      <a href="#about">about <i>&#8599;</i></a>
+      <a href="#contact">contact <i>&#8599;</i></a>
+    </div>
+
+    <div class="nav-cta">
+      <button class="kbd-hint" id="palette-open" aria-label="Open command palette">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        Search <kbd>Ctrl</kbd><kbd>K</kbd>
+      </button>
+      <a class="btn btn-primary btn-sm nav-resume" id="nav-resume" href="#">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Résumé
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ======================= HERO ======================= -->
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div>
+      <div class="badge">
+        <span class="pulse"></span>
+        <span id="avail-text">Open to AI/ML Engineer roles</span>
+      </div>
+
+      <div class="hero-name" id="hero-name"></div>
+      <h1 class="display">
+        <span class="d-line">AI THAT CAN</span>
+        <span class="d-line"><em>prove</em> <span class="slash">//</span></span>
+        <span class="d-line d-indent">IT&rsquo;S RIGHT</span>
+      </h1>
+      <div class="hero-role"><span id="typed"></span><span class="caret">&nbsp;</span></div>
+      <p class="hero-desc" id="hero-desc"></p>
+
+      <div class="hero-actions">
+        <a href="#assistant" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Ask my AI assistant
+        </a>
+        <a href="#projects" class="btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          See my work
+        </a>
+        <a href="#" class="btn btn-ghost" id="resume-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Résumé
+        </a>
+      </div>
+
+      <div class="metrics" id="metrics"></div>
+    </div>
+
+    <!-- ---- Anime assistant character ---- -->
+    <div class="hero-bot" id="hero-bot">
+      <canvas class="strand-canvas" id="strand-canvas"></canvas>
+      <div class="bot-stage">
+        <div class="bot-glow"></div>
+        <div class="bot-rings"><span></span><span></span></div>
+        <div class="bot-char" id="avatar-mount"></div>
+        <div class="bot-name">
+          <span class="bot-name-tag">NEURA</span>
+          <span class="bot-name-sub">Ritesh's AI assistant</span>
+        </div>
+      </div>
+
+      <div class="bot-bubble" id="hero-bubble">
+        <div class="bubble-inner" id="hero-bubble-text">
+          Hi! I'm <b>Neura</b> — Ritesh built me as a real retrieval system, not a chat script. Ask me anything about his work.
+        </div>
+        <div class="bubble-meta" id="hero-bubble-meta"></div>
+      </div>
+
+      <div class="neura-skills" role="group" aria-label="Things Neura can do">
+        <button type="button" class="skill-btn skill-main" data-skill="match">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Match a job
+        </button>
+        <button type="button" class="skill-btn" data-skill="pitch">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8L12 14.6l-4.9 3.6 1.9-5.8L4 8.8h6.1z"/></svg>
+          Pitch me
+        </button>
+        <button type="button" class="skill-btn" data-skill="tour">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.2 4.8-4.8 2.2 2.2-4.8z"/></svg>
+          Tour
+        </button>
+      </div>
+
+      <div class="bot-chips" id="hero-chips"></div>
+
+      <form class="bot-input-row" id="hero-form">
+        <input class="bot-input" id="hero-input" placeholder="Ask Neura something…" autocomplete="off" aria-label="Ask the assistant">
+        <button class="bot-send" type="submit" aria-label="Send">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<!-- ======================= MARQUEE ======================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marquee-track"></div>
+</div>
+
+<!-- ======================= AT A GLANCE ======================= -->
+<div class="glance-wrap">
+  <div class="wrap">
+    <div class="glance reveal reveal-stagger" id="glance"></div>
+  </div>
+</div>
+
+<!-- ======================= ASSISTANT ======================= -->
+<section id="assistant">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag"><span class="sec-num">[ SEC. 01 ]</span> live demo</div>
+      <h2>Ask Neura <em>anything</em></h2>
+      <p>She's a real search-and-answer system, not a chat script. Ask a question and the panel on the right shows you exactly which parts of my background she found, and why she picked them.</p>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-n">1</span>
+          <div><b>Your question</b><span>Broken down into its key words</span></div>
+        </div>
+        <div class="step">
+          <span class="step-n">2</span>
+          <div><b>Search</b><span>Every fact about me gets scored for relevance</span></div>
+        </div>
+        <div class="step">
+          <span class="step-n">3</span>
+          <div><b>Answer</b><span>Written only from the top matches, with sources</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-shell reveal">
+      <div class="panel chat-panel">
+        <div class="chat-head">
+          <div class="chat-avatar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3v1a3 3 0 0 0 0 6v1a3 3 0 0 0 3 3 3 3 0 0 0 6 0 3 3 0 0 0 3-3v-1a3 3 0 0 0 0-6V9a3 3 0 0 0-3-3V5a3 3 0 0 0-3-3z"/></svg>
+          </div>
+          <div style="flex:1">
+            <div class="chat-title">Portfolio Assistant</div>
+            <div class="chat-status"><span class="pulse"></span><span id="brain-mode">local RAG · no API key</span></div>
+          </div>
+          <button class="btn btn-sm btn-ghost" id="settings-open" title="Connect an LLM">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1A1.7 1.7 0 0 0 8.9 19a1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 5 8.9a1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+          </button>
+        </div>
+
+        <div class="chat-log" id="chat-log"></div>
+        <div class="chat-suggest" id="chat-suggest"></div>
+
+        <form class="chat-input-row" id="chat-form">
+          <input class="chat-input" id="chat-input" placeholder="Ask about my RAG work, results, projects…" autocomplete="off">
+          <button class="send-btn" type="submit" id="chat-send" aria-label="Send">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="panel inspector">
+        <div class="insp-head">
+          <h3>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-deep)"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            How she found it
+          </h3>
+          <span class="chunk-src" id="corpus-size"></span>
+        </div>
+        <div class="insp-body" id="inspector">
+          <div class="insp-empty">
+            Ask a question and Neura&rsquo;s working appears here —<br>
+            what she searched for, what she found, and why she picked it.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PROJECTS ======================= -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag"><span class="sec-num">[ SEC. 02 ]</span> selected work</div>
+      <h2>Things I&rsquo;ve <em>built</em></h2>
+      <p>Systems that actually shipped — two are deployed and clickable right now. Every claim below has a number or a link behind it.</p>
+    </div>
+    <div id="proj-featured" class="reveal"></div>
+    <div class="proj-grid" id="proj-grid"></div>
+  </div>
+</section>
+
+<!-- ======================= PLAYGROUND ======================= -->
+<section id="playground">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag"><span class="sec-num">[ SEC. 03 ]</span> interactive</div>
+      <h2>AI you can <em>actually</em> play with</h2>
+      <p>Six demos, all running live in your browser right now. Every algorithm is written from scratch — no libraries, no pretrained models, nothing pre-recorded.</p>
+    </div>
+
+    <div class="tabs reveal" id="tabs">
+      <button class="tab active" data-tab="nn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 6.5 10.5 11M7 17.5 10.5 13M14 11 17 6.5M14 13l3 4.5"/></svg>
+        Neural Network
+      </button>
+      <button class="tab" data-tab="rag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        RAG Pipeline
+      </button>
+      <button class="tab" data-tab="agent">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4M8 2h8"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></svg>
+        Agentic Loop
+      </button>
+      <button class="tab" data-tab="attn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+        Self-Attention
+      </button>
+      <button class="tab" data-tab="kmeans">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="8" r="3"/><circle cx="11" cy="17" r="3"/></svg>
+        Clustering
+      </button>
+      <button class="tab" data-tab="reg">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21 21 3M3 21h18"/><circle cx="8" cy="15" r="1.6"/><circle cx="13" cy="10" r="1.6"/><circle cx="17" cy="7" r="1.6"/></svg>
+        Regression
+      </button>
+    </div>
+
+    <!-- ---- Neural network ---- -->
+    <div class="tab-panel active" data-panel="nn">
+      <div class="demo-intro">
+        <b>Teach a computer to tell two groups of dots apart.</b>
+        <span>Press <b>Train</b>. The coloured background is the network's current guess about every point on the canvas — watch it bend into shape as it learns. Click anywhere to add your own dots.</span>
+      </div>
+      <div class="demo-grid">
+        <div>
+          <div class="canvas-wrap">
+            <canvas id="nn-canvas" width="720" height="440"></canvas>
+            <div class="canvas-badge" id="nn-badge">click to add points</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px">
+            <div class="canvas-wrap" style="padding:10px">
+              <div class="stat-l" style="margin-bottom:6px">LOSS CURVE (binary cross-entropy)</div>
+              <canvas id="nn-loss" width="340" height="110"></canvas>
+            </div>
+            <div class="canvas-wrap" style="padding:10px">
+              <div class="stat-l" style="margin-bottom:6px">NETWORK ARCHITECTURE</div>
+              <canvas id="nn-arch" width="340" height="110"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="ctrl-stack">
+          <div class="ctrl-group">
+            <div class="ctrl-label">Dataset</div>
+            <select id="nn-dataset">
+              <option value="spiral">Two spirals (hard)</option>
+              <option value="circles">Concentric circles</option>
+              <option value="xor">XOR quadrants</option>
+              <option value="blobs">Gaussian blobs (easy)</option>
+            </select>
+          </div>
+          <div class="ctrl-group">
+            <div class="ctrl-label">Hidden layers <span class="ctrl-val" id="nn-arch-val">8 → 8</span></div>
+            <select id="nn-layers">
+              <option value="4">1 layer · 4 neurons</option>
+              <option value="8">1 layer · 8 neurons</option>
+              <option value="8,8" selected>2 layers · 8 → 8</option>
+              <option value="12,8">2 layers · 12 → 8</option>
+              <option value="16,12,8">3 layers · 16 → 12 → 8</option>
+            </select>
+          </div>
+          <div class="ctrl-group">
+            <div class="ctrl-label">Activation</div>
+            <select id="nn-act">
+              <option value="tanh">tanh</option>
+              <option value="relu">ReLU</option>
+              <option value="sigmoid">sigmoid</option>
+            </select>
+          </div>
+          <div class="ctrl-group">
+            <div class="ctrl-label">Learning rate <span class="ctrl-val" id="nn-lr-val">0.080</span></div>
+            <input type="range" id="nn-lr" min="1" max="60" value="8">
+          </div>
+
+          <div class="btn-row">
+            <button class="btn btn-primary btn-sm" id="nn-play">▶ Train</button>
+            <button class="btn btn-sm" id="nn-reset">Reset</button>
+            <button class="btn btn-sm" id="nn-regen">New data</button>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat"><div class="stat-l">EPOCH</div><div class="stat-v" id="nn-epoch">0</div></div>
+            <div class="stat"><div class="stat-l">LOSS</div><div class="stat-v" id="nn-loss-val">—</div></div>
+            <div class="stat"><div class="stat-l">ACCURACY</div><div class="stat-v" id="nn-acc">—</div></div>
+            <div class="stat"><div class="stat-l">PARAMS</div><div class="stat-v" id="nn-params">0</div></div>
+          </div>
+
+          <div class="legend">
+            <div class="legend-item"><span class="legend-dot" style="background:#2f5d6e"></span>Class 0</div>
+            <div class="legend-item"><span class="legend-dot" style="background:#d98a1e"></span>Class 1</div>
+          </div>
+
+          <div class="note">
+            <strong>Under the hood:</strong> a real neural network with backpropagation written by hand — no libraries. "Loss" is how wrong it currently is, and it should fall steadily. Try <em>Two spirals</em> with only 4 neurons: it will fail, because the shape is too complex for that few.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- RAG pipeline ---- -->
+    <div class="tab-panel" data-panel="rag">
+      <div class="demo-intro">
+        <b>This is how Neura above actually works — try it on your own text.</b>
+        <span>Paste anything, ask a question about it, and every step is shown: how the text gets split up, how each piece is scored against your question, and which pieces survive to form the answer.</span>
+      </div>
+      <div class="demo-grid">
+        <div class="ctrl-stack">
+          <div class="ctrl-group">
+            <div class="ctrl-label">1 · Your document <span class="ctrl-val" id="rag-doc-stats"></span></div>
+            <textarea class="text-input" id="rag-doc" rows="7"></textarea>
+          </div>
+          <div class="ctrl-group">
+            <div class="ctrl-label">Chunk size <span class="ctrl-val" id="rag-cs-val">180 chars</span></div>
+            <input type="range" id="rag-cs" min="80" max="400" value="180" step="10">
+          </div>
+          <div class="ctrl-group">
+            <div class="ctrl-label">Overlap <span class="ctrl-val" id="rag-ov-val">40 chars</span></div>
+            <input type="range" id="rag-ov" min="0" max="120" value="40" step="5">
+          </div>
+          <div class="ctrl-group">
+            <div class="ctrl-label">2 · Ask a question</div>
+            <input class="text-input" id="rag-q" placeholder="What does the document say about…">
+          </div>
+          <button class="btn btn-primary" id="rag-run">Run pipeline</button>
+          <div class="note">
+            <strong>Try breaking it:</strong> set the chunk size very small and the answer loses its context. Set the overlap to zero and any fact sitting on a boundary becomes unfindable. This is the real trade-off in every search system.
+          </div>
+        </div>
+
+        <div class="panel" style="padding:18px;min-height:520px" id="rag-out">
+          <div class="insp-empty">Paste text, ask a question, hit run.<br>Every pipeline stage is rendered step by step.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- Agent ---- -->
+    <div class="tab-panel" data-panel="agent">
+      <div class="demo-intro">
+        <b>Give an AI a goal and watch it figure out the steps itself.</b>
+        <span>It splits your goal into parts, picks the right tool for each one, runs it, and reads the result before answering. Expand any step to see the raw data it got back.</span>
+      </div>
+      <div class="demo-grid">
+        <div class="ctrl-stack">
+          <div class="ctrl-group">
+            <div class="ctrl-label">Give the agent a goal</div>
+            <input class="text-input" id="agent-goal" placeholder="e.g. list my langgraph projects and how to contact me">
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary" id="agent-run">Run agent</button>
+            <button class="btn" id="agent-clear">Clear</button>
+          </div>
+          <div class="ctrl-group">
+            <div class="ctrl-label">Try one of these</div>
+            <div class="pill-row" id="agent-examples"></div>
+          </div>
+          <div class="ctrl-group">
+            <div class="ctrl-label">Registered tools</div>
+            <div id="agent-tools" style="display:grid;gap:7px"></div>
+          </div>
+          <div class="note">
+            <strong>Why this matters:</strong> a chatbot only talks. An agent <em>does things</em> — it calls real functions and works from what they return, so it can't invent an answer. Try a two-part goal and watch it handle each half separately.
+          </div>
+        </div>
+
+        <div class="panel" style="padding:18px;min-height:520px">
+          <div class="trace" id="agent-trace">
+            <div class="insp-empty">Give the agent a goal to watch it reason.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- Attention ---- -->
+    <div class="tab-panel" data-panel="attn">
+      <div class="demo-intro">
+        <b>See which words a language model connects to which.</b>
+        <span>This is the mechanism behind every modern AI model. Brighter squares mean a stronger connection — row <em>i</em> shows what word <em>i</em> is paying attention to.</span>
+      </div>
+      <div class="demo-grid">
+        <div>
+          <div class="panel" style="padding:20px;overflow:auto">
+            <div class="stage-label">Each row shows what that word is looking at</div>
+            <div style="font-family:var(--mono);font-size:11px;color:var(--dim);margin:-2px 0 10px">softmax( Q · K&#7488; / &radic;d<sub>k</sub> ) · brighter = stronger link</div>
+            <div class="attn-grid" id="attn-out"></div>
+          </div>
+        </div>
+        <div class="ctrl-stack">
+          <div class="ctrl-group">
+            <div class="ctrl-label">Input sentence</div>
+            <textarea class="text-input" id="attn-text" rows="3">the model learns to retrieve relevant documents before it answers</textarea>
+          </div>
+          <div class="ctrl-group">
+            <div class="ctrl-label">Attention head <span class="ctrl-val" id="attn-head-val">0</span></div>
+            <input type="range" id="attn-head" min="0" max="5" value="0">
+          </div>
+          <button class="btn btn-primary" id="attn-run">Compute attention</button>
+          <div class="stat-grid">
+            <div class="stat"><div class="stat-l">TOKENS</div><div class="stat-v" id="attn-n">—</div></div>
+            <div class="stat"><div class="stat-l">d_model</div><div class="stat-v" id="attn-dim">32</div></div>
+          </div>
+          <div class="note">
+            <strong>Why it matters:</strong> this is how a model knows that "it" in a sentence refers back to a specific earlier word. Real models run several of these "heads" at once, each learning a different kind of relationship — drag the slider to switch between them.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- KMeans ---- -->
+    <div class="tab-panel" data-panel="kmeans">
+      <div class="demo-intro">
+        <b>Sort scattered points into groups — without being told what the groups are.</b>
+        <span>Press <b>Run</b> and watch it repeat two moves: assign every point to its nearest centre, then move each centre to the middle of its points. Repeat until nothing moves.</span>
+      </div>
+      <div class="demo-grid">
+        <div class="canvas-wrap">
+          <canvas id="km-canvas" width="720" height="460"></canvas>
+          <div class="canvas-badge">click to add points</div>
+        </div>
+        <div class="ctrl-stack">
+          <div class="ctrl-group">
+            <div class="ctrl-label">Clusters (k) <span class="ctrl-val" id="km-k-val">3</span></div>
+            <input type="range" id="km-k" min="2" max="6" value="3">
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary btn-sm" id="km-play">▶ Run</button>
+            <button class="btn btn-sm" id="km-step">Step</button>
+            <button class="btn btn-sm" id="km-reset">Reset</button>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><div class="stat-l">ITERATION</div><div class="stat-v" id="km-iter">0</div></div>
+            <div class="stat"><div class="stat-l">INERTIA</div><div class="stat-v" id="km-inertia">—</div></div>
+            <div class="stat"><div class="stat-l">POINTS</div><div class="stat-v" id="km-n">0</div></div>
+            <div class="stat"><div class="stat-l">STATE</div><div class="stat-v" id="km-state">idle</div></div>
+          </div>
+          <div class="note">
+            <strong>Under the hood:</strong> where you drop the starting centres decides how good the result is. This uses <em>k-means++</em>, which spreads the starting points out on purpose so two centres don't land in the same blob. "Inertia" measures how tight the groups are — lower is better.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- Regression ---- -->
+    <div class="tab-panel" data-panel="reg">
+      <div class="demo-intro">
+        <b>Draw the best line through some data — then watch it try too hard.</b>
+        <span>Press <b>Fit</b>. At low complexity the curve is too stiff to follow the data. Crank the complexity up and it contorts to touch every single point — which looks perfect and predicts terribly.</span>
+      </div>
+      <div class="demo-grid">
+        <div class="canvas-wrap">
+          <canvas id="reg-canvas" width="720" height="460"></canvas>
+          <div class="canvas-badge">click to add data points</div>
+        </div>
+        <div class="ctrl-stack">
+          <div class="ctrl-group">
+            <div class="ctrl-label">Polynomial degree <span class="ctrl-val" id="reg-deg-val">3</span></div>
+            <input type="range" id="reg-deg" min="1" max="8" value="3">
+          </div>
+          <div class="ctrl-group">
+            <div class="ctrl-label">Learning rate <span class="ctrl-val" id="reg-lr-val">0.120</span></div>
+            <input type="range" id="reg-lr" min="1" max="50" value="12">
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary btn-sm" id="reg-play">▶ Fit</button>
+            <button class="btn btn-sm" id="reg-reset">Reset</button>
+            <button class="btn btn-sm" id="reg-clear">Clear pts</button>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><div class="stat-l">STEPS</div><div class="stat-v" id="reg-steps">0</div></div>
+            <div class="stat"><div class="stat-l">MSE</div><div class="stat-v" id="reg-mse">—</div></div>
+          </div>
+          <div class="note">
+            <strong>This is called overfitting</strong>, and it's one of the biggest traps in machine learning: a model that memorises its training data instead of learning the pattern. It scores perfectly on data it has seen and fails on anything new.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SKILLS ======================= -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag"><span class="sec-num">[ SEC. 04 ]</span> toolkit</div>
+      <h2>What I <em>work</em> with</h2>
+      <p>Rated honestly, not generously. Ask Neura what I'm still learning and she'll tell you that too.</p>
+    </div>
+    <div class="skills-grid" id="skills-grid"></div>
+    <div class="also-skills reveal">
+      <div class="sec-tag" style="margin-bottom:12px">also on the résumé</div>
+      <div class="stack-row" id="also-skills"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ABOUT ======================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag"><span class="sec-num">[ SEC. 05 ]</span> background</div>
+      <h2>About <em>me</em></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1.3fr .7fr;gap:36px;align-items:start" class="reveal" id="about-layout">
+      <div id="about-text" style="display:grid;gap:16px;font-size:16px;color:var(--muted)"></div>
+      <div class="card">
+        <h3 style="font-size:15px;margin-bottom:14px;display:flex;align-items:center;gap:8px">
+          <span class="pulse"></span> Currently
+        </h3>
+        <div id="now-list" style="display:grid;gap:11px"></div>
+      </div>
+    </div>
+
+    <div class="term reveal" style="margin-top:36px">
+      <div class="term-bar">
+        <span class="dot" style="background:#ff5f57"></span>
+        <span class="dot" style="background:#febc2e"></span>
+        <span class="dot" style="background:#28c840"></span>
+        <span class="term-title">eval/run.py — retrieval benchmark</span>
+      </div>
+      <div class="term-body" id="term-body"></div>
+    </div>
+
+    <div style="margin-top:56px" class="reveal">
+      <div class="sec-tag" style="margin-bottom:20px">Experience &amp; education</div>
+      <div class="timeline" id="timeline"></div>
+    </div>
+
+    <div style="margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:18px" id="extras-row">
+      <div class="card">
+        <h3 style="font-size:15px;margin-bottom:14px">Certifications</h3>
+        <div id="cert-list" style="display:grid;gap:10px"></div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px;margin-bottom:14px">Leadership &amp; community</h3>
+        <div id="lead-list" style="display:grid;gap:12px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CONTACT ======================= -->
+<section id="contact">
+  <div class="wrap">
+    <div class="card contact-card reveal">
+      <h2>Let&rsquo;s build something <span class="grad-text">that works.</span></h2>
+      <p id="contact-blurb"></p>
+      <div class="contact-actions" id="contact-actions"></div>
+    </div>
+
+    <div class="footer">
+      <div>© <span id="year"></span> <span id="foot-name"></span> · Built with zero dependencies</div>
+      <div class="foot-links">
+        <a href="#top">Back to top</a>
+        <a href="#" id="foot-source">View source</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= OVERLAYS ======================= -->
+<button class="fab" id="fab" aria-label="Open assistant">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</button>
+
+<div class="palette-bg" id="palette-bg">
+  <div class="palette">
+    <input class="palette-input" id="palette-input" placeholder="Jump to a section, or ask Neura…" autocomplete="off">
+    <div class="palette-list" id="palette-list"></div>
+  </div>
+</div>
+
+<div class="modal-bg" id="settings-modal">
+  <div class="modal">
+    <h3>Connect a language model</h3>
+    <p>The assistant already works — it runs a real retrieval pipeline locally with no key. Adding a key swaps only the <em>generation</em> step for a live LLM, so answers get written rather than assembled. Retrieval stays identical.</p>
+
+    <div class="field">
+      <label>Provider</label>
+      <select id="llm-provider">
+        <option value="groq">Groq — free tier, fastest</option>
+        <option value="openai">OpenAI-compatible</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>API key</label>
+      <input class="text-input" id="llm-key" type="password" placeholder="gsk_… / sk_…" autocomplete="off">
+    </div>
+    <div class="field">
+      <label>Model</label>
+      <input class="text-input" id="llm-model" placeholder="llama-3.3-70b-versatile">
+    </div>
+
+    <div class="note" style="margin-bottom:18px">
+      Your key is kept in this browser tab's memory only — never written to storage, never sent anywhere except the provider you chose. Reloading the page clears it.
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" id="llm-save">Save &amp; use</button>
+      <button class="btn" id="llm-clear">Use local mode</button>
+      <button class="btn btn-ghost" id="settings-close">Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="matcher-modal" role="dialog" aria-modal="true" aria-labelledby="matcher-title">
+  <div class="modal matcher">
+    <div class="matcher-head">
+      <div class="matcher-avatar" id="matcher-avatar"></div>
+      <div class="matcher-intro">
+        <div class="sec-tag"><span class="sec-num">[ NEURA.SKILL ]</span> job match</div>
+        <h3 id="matcher-title">Does Ritesh fit <em>your</em> role?</h3>
+        <p>Paste a job description. I'll check every requirement against work he has actually shipped — and tell you the gaps too.</p>
+      </div>
+      <button type="button" class="modal-x" id="matcher-close" aria-label="Close">&#10005;</button>
+    </div>
+
+    <div class="matcher-input" id="matcher-input">
+      <textarea class="text-input" id="matcher-jd" rows="10" placeholder="Paste the full job description here — requirements section included…"></textarea>
+      <div class="btn-row">
+        <button type="button" class="btn btn-primary" id="matcher-run">Analyse the fit</button>
+        <button type="button" class="btn" id="matcher-sample">Try a sample job</button>
+      </div>
+      <div class="matcher-privacy">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        Runs entirely in your browser. Nothing you paste is sent anywhere.
+      </div>
+    </div>
+
+    <div class="matcher-results" id="matcher-results" hidden></div>
+  </div>
+</div>
+
+<div class="tour-card" id="tour-card" role="dialog" aria-live="polite" aria-label="Guided tour" hidden>
+  <div class="tour-avatar" id="tour-avatar"></div>
+  <div class="tour-body">
+    <div class="tour-step" id="tour-step">01 / 06</div>
+    <p id="tour-text"></p>
+    <div class="tour-actions">
+      <button type="button" class="btn btn-sm btn-ghost" id="tour-end">End tour</button>
+      <button type="button" class="btn btn-sm" id="tour-back">← Back</button>
+      <button type="button" class="btn btn-sm btn-primary" id="tour-next">Next →</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/profile.js"></script>
+<script src="js/rag.js"></script>
+<script src="js/ml.js"></script>
+<script src="js/agent.js"></script>
+<script src="js/avatar.js"></script>
+<script src="js/chat.js"></script>
+<script src="js/neura-skills.js"></script>
+<script src="js/playground.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
